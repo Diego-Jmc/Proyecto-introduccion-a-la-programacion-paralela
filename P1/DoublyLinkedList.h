@@ -21,6 +21,6 @@ public:
     virtual ~DoublyLinkedList();
     void push(T* data);
     bool empty();
-    void remove(T atribbute); // delete by unique value
+    void remove(T atribbute); 
     std::string toString();
 };

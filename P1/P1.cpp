@@ -1,15 +1,16 @@
 
-#include "DoublyLinkedList.cpp"
+#include "Menu.h"
 
 int main()
 {
-    DoublyLinkedList<int> l;
 
-    l.push(new int(4));
+	Menu *m = new Menu();
 
-        
-    std::cout << l.toString();
 
+	m->start();
+
+
+	delete m;
 
 }
 

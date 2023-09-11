@@ -83,7 +83,7 @@ std::string DoublyLinkedList<T>::toString() {
 
     while (temp) {
 
-        s << *temp->data << std::endl;
+        s <<  (*temp->data) << std::endl;
         temp = temp->next;
     }
 
