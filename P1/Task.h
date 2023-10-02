@@ -14,10 +14,10 @@ public:
     Task(const string& name, const string& description, Date* dueDate, bool done);
 
     friend std::ostream& operator<<(std::ostream& os, const Task& task) {
-        os << "Nombre: " << task.getName() << std::endl;
-        os << "Descripción: " << task.getDescription() << std::endl;
-        os << "Fecha de Vencimiento: " << *(task.getDueDate()) << std::endl;
-        os << "Completada: " << (task.isDone() ? "Si" : "No") << std::endl;
+        os << "Name: " << task.getName() << std::endl;
+        os << "Description: " << task.getDescription() << std::endl;
+        os << "Due date: " << *(task.getDueDate()) << std::endl;
+        os << "Completed : " << (task.isDone() ? "Yes" : "No") << std::endl;
         return os;
     }
 

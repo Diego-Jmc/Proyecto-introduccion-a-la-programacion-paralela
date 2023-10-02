@@ -1,7 +1,7 @@
 #pragma once
 #include "Task.h"
-#include "DoublyLinkedList.cpp"
 #include <fstream>
+#include "DoublyLinkedList.h"
 
 class TaskFileManager
 {
@@ -12,6 +12,8 @@ public:
 	TaskFileManager(string);
 	void save(Task *t);
 	DoublyLinkedList<Task>* load();
+	void saveAll(DoublyLinkedList<Task>* tasks);
 
 };
 
+#include "DoublyLinkedList.cpp"

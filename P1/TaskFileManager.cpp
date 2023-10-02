@@ -61,3 +61,33 @@ DoublyLinkedList<Task>* TaskFileManager::load() {
 
     return taskList;
 }
+
+
+
+void TaskFileManager::saveAll(DoublyLinkedList<Task>* tasks)
+{
+    auto* root = tasks->getRoot();
+
+    std::ofstream task_file(filename);
+
+
+    std::stringstream s;
+
+    while (root) {
+
+        s << root->getData()->getName() << std::endl;
+        s << root->getData()->getDescription() << std::endl;
+        s << *root->getData()->getDueDate() << std::endl;
+        s << root->getData()->isDone() << std::endl;
+
+        root = root->getNext();
+    }
+
+    if (task_file.is_open()) {
+        task_file << s.str();
+    }
+
+
+    task_file.close();
+
+}

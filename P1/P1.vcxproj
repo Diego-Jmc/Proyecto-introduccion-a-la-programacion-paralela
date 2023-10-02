@@ -127,17 +127,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Contact.cpp" />
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="DoublyLinkedList.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Node.cpp" />
     <ClCompile Include="P1.cpp" />
     <ClCompile Include="Task.cpp" />
     <ClCompile Include="TaskFileManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Contact.h" />
     <ClInclude Include="Date.h" />
     <ClInclude Include="DoublyLinkedList.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="Task.h" />
     <ClInclude Include="TaskFileManager.h" />
   </ItemGroup>

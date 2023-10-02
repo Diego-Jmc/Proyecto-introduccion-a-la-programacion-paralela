@@ -17,8 +17,8 @@ DoublyLinkedList<T>::~DoublyLinkedList() {
         Node<T>* temp2;
         while (temp) {
             temp2 = temp;
-            temp = temp->next;
-            delete temp2->data;
+            temp = temp->getNext();
+            delete temp2->getData();
             delete temp2;
         }
 
@@ -29,9 +29,9 @@ template<class T>
 void DoublyLinkedList<T>::push(T* data) {
 
     auto* newNode = new Node<T>;
-    newNode->data = data;
-    newNode->next = nullptr;
-    newNode->prev = nullptr;
+    newNode->setData(data);
+    newNode->setNext(nullptr);
+    newNode->setPrev(nullptr);
 
     if (!root) {
         root = newNode;
@@ -39,11 +39,11 @@ void DoublyLinkedList<T>::push(T* data) {
     else {
         Node<T>* temp = root;
 
-        while (temp->next) {
-            temp = temp->next;
+        while (temp->getNext()) {
+            temp = temp->getNext();
         }
-        newNode->prev = temp;
-        temp->next = newNode;
+        newNode->setPrev(temp);
+        temp->setNext(newNode);
 
     }
 
@@ -56,23 +56,29 @@ bool DoublyLinkedList<T>::empty() {
 }
 
 template<class T>
-void DoublyLinkedList<T>::remove(T value) {
+bool DoublyLinkedList<T>::remove(T* value) {
 
     auto* temp = root;
 
     while (temp) {
 
-        if (temp->data == value) {
-            temp->prev->next = temp->next;
-            temp->next->prev = temp->prev;
-            delete temp->data;
+        if (temp->getData()->getName() == value->getName()) {
+
+            if (temp->getPrev() != nullptr)
+                temp->getPrev()->setNext(temp->getNext());
+
+
+            if (temp->getNext() != nullptr)
+                temp->getNext()->setPrev(temp->getPrev());
+
             delete temp;
-            return;
+            this->length--;
+            return true;
         }
 
-        temp = temp->next;
+        temp = temp->getNext();
     }
-
+    return false;
 }
 
 template<class T>
@@ -83,10 +89,58 @@ std::string DoublyLinkedList<T>::toString() {
 
     while (temp) {
 
-        s <<  (*temp->data) << std::endl;
-        temp = temp->next;
+        s << (*temp->getData()) << std::endl;
+        temp = temp->getNext();
     }
 
 
     return s.str();
 }
+
+template<class T>
+bool DoublyLinkedList<T>::contains(T* data) {
+    auto* temp = root;
+
+    while (temp) {
+
+
+        if (temp->getData()->getName() == data->getName())
+            return true;
+
+        temp = temp->getNext();
+    }
+
+    return false;
+}
+
+template<class T>
+int DoublyLinkedList<T>::size()
+{
+    return this->length;
+}
+
+template<class T>
+Node<T>* DoublyLinkedList<T>::getRoot()
+{
+    return root;
+}
+
+template<class T>
+T* DoublyLinkedList<T>::getByName(std::string name)
+{
+    auto* temp = root;
+
+    while (temp) {
+
+
+        if (temp->getData()->getName() == name)
+            return temp->getData();
+
+        temp = temp->getNext();
+    }
+
+    return nullptr;
+}
+
+
+

@@ -4,6 +4,8 @@
 int main()
 {
 
+	std::cin.clear();
+
 	Menu *m = new Menu();
 
 

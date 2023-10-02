@@ -1,13 +1,7 @@
 #pragma once
 #include <iostream>
 #include <sstream>
-
-template<class T>
-struct Node {
-    Node* next;
-    Node* prev;
-    T* data;
-};
+#include "Node.cpp"
 
 template<class T>
 class DoublyLinkedList {
@@ -21,6 +15,12 @@ public:
     virtual ~DoublyLinkedList();
     void push(T* data);
     bool empty();
-    void remove(T atribbute); 
+    bool remove(T* atribbute);
     std::string toString();
+    bool contains(T*);
+    int size();
+    Node<T>* getRoot();
+    T* getByName(std::string name);
 };
+
+
